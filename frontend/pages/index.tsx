@@ -1,7 +1,9 @@
-export default function IndexPage() {
+import { ReactNode } from 'react';
+
+export default function IndexPage(): ReactNode {
   return (
-    <div>
+    <>
       <p>Hello!!!</p>
-    </div>
+    </>
   );
 }

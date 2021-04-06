@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { ReactElement } from 'react';
 
-export default function IndexPage(): ReactNode {
+export default function IndexPage(): ReactElement {
   return (
     <>
       <p>Hello!!!</p>

@@ -4,7 +4,7 @@ import { ReactElement } from 'react';
 import styled from 'styled-components';
 import Product from './Product';
 
-const ALL_PRODUCT_QUERY = gql`
+export const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY {
     allProducts {
       id
@@ -28,7 +28,7 @@ const ProductsListStyles = styled.div`
 `;
 
 export default function Products(): ReactElement {
-  const { data, error, loading } = useQuery(ALL_PRODUCT_QUERY);
+  const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

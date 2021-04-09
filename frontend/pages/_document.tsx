@@ -1,9 +1,17 @@
-import Document, { Html, Head, NextScript, Main } from 'next/document';
+import { AppInitialProps } from 'next/app';
+import Document, {
+  Html,
+  Head,
+  NextScript,
+  Main,
+  DocumentContext,
+} from 'next/document';
 import { ReactElement } from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
+// TODO: fix typing of MyDocument and return type getInitialProps
 export default class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
+  static getInitialProps({ renderPage }: DocumentContext) {
     const sheet = new ServerStyleSheet();
     const page = renderPage((App) => (props) =>
       sheet.collectStyles(<App {...props} />)

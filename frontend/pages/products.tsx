@@ -1,9 +1,10 @@
 import { ReactElement } from 'react';
+import Products from '../components/Products';
 
 export default function ProductPage(): ReactElement {
   return (
-    <div>
-      <p>Hello product!!!</p>
-    </div>
+    <>
+      <Products />
+    </>
   );
 }

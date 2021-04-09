@@ -1,9 +1,3 @@
-import { ReactElement } from 'react';
+import ProductPage from './products';
 
-export default function IndexPage(): ReactElement {
-  return (
-    <>
-      <p>Hello!!!</p>
-    </>
-  );
-}
+export default ProductPage;

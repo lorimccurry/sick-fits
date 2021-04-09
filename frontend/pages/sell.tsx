@@ -1,9 +1,10 @@
 import { ReactElement } from 'react';
+import CreateProduct from '../components/CreateProduct';
 
 export default function SellPage(): ReactElement {
   return (
     <div>
-      <p>Hello sell!!!</p>
+      <CreateProduct />
     </div>
   );
 }

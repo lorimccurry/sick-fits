@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const LogoStyles = styled.h1`
   background: red;
   font-size: 4rem;
+  margin-left: 2rem;
   position: relative;
   z-index: 2;
   transform: skew(-7deg);
@@ -23,8 +24,7 @@ const HeaderStyles = styled.header`
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
+    align-items: stretch;
   }
 
   .sub-bar {
@@ -41,11 +41,11 @@ export default function Header(): ReactElement {
         <LogoStyles>
           <Link href="/">Sick fits</Link>
         </LogoStyles>
+        <Nav />
       </div>
       <div className="sub-bar">
         <p>Search</p>
       </div>
-      <Nav />
     </HeaderStyles>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface UseFormReturn {
   inputs: Inputs;
@@ -15,6 +15,14 @@ interface Inputs {
 
 export default function useForm(initial = {}): UseFormReturn {
   const [inputs, setInputs] = useState(initial);
+
+  // prevents infinite loop of setInputs to initial
+  // gives useEffect something to watch that only
+  // changes when initial is first passed in
+  const initialValues = Object.values(initial).join('');
+  useEffect(() => {
+    setInputs(initial);
+  }, [initialValues]);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     let { value } = Object.assign(event.target);

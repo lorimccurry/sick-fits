@@ -1,0 +1,10 @@
+import { ReactElement } from 'react';
+import UpdateProduct from '../components/UpdateProduct';
+
+export default function UpdatePage({ query }): ReactElement {
+  return (
+    <div>
+      <UpdateProduct id={query.id} />
+    </div>
+  );
+}

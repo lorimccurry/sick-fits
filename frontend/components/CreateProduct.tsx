@@ -33,6 +33,7 @@ const CREATE_PRODUCT_MUTATION = gql`
 
 export default function CreateProduct(): ReactElement {
   const { inputs, handleChange, resetForm, clearForm } = useForm({
+    image: '',
     name: 'hi name',
     price: 123124,
     description: 'this is the best',

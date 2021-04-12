@@ -11,7 +11,7 @@ type PaginationProps = {
   page: number;
 };
 
-const PAGINATION_QUERY = gql`
+export const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY {
     _allProductsMeta {
       count

@@ -51,12 +51,11 @@ const InnerStyles = styled.div`
   padding: 2rem;
 `;
 
-type Props = {
+type PageProps = {
   children?: ReactNode;
-  cool?: string;
 };
 
-export default function Page({ children, cool }: Props): ReactElement {
+export default function Page({ children }: PageProps): ReactElement {
   return (
     <div>
       <GlobalStyles />

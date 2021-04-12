@@ -4,28 +4,29 @@ import ItemStyles from './styles/ItemStyles';
 import Title from './styles/Title';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
+import DeleteProduct from './DeleteProduct';
 
-interface ProductProps {
+type ProductProps = {
   key: string;
   product: Product;
-}
+};
 
-interface Product {
+type Product = {
   id: string;
   name: string;
   price: number;
   description: string;
   photo?: Photo;
-}
+};
 
-interface Photo {
+type Photo = {
   id: string;
   image?: Image;
-}
+};
 
-interface Image {
+type Image = {
   publicUrlTransformed: string;
-}
+};
 
 export default function Product({ product }: ProductProps): ReactElement {
   return (
@@ -50,6 +51,7 @@ export default function Product({ product }: ProductProps): ReactElement {
         >
           Edit ✏️
         </Link>
+        <DeleteProduct id={product.id}>Delete</DeleteProduct>
       </div>
     </ItemStyles>
   );

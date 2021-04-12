@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 
-interface UseFormReturn {
+type UseFormReturn = {
   inputs: Inputs;
   handleChange: (event) => void;
   resetForm: () => void;
   clearForm: () => void;
-}
+};
 
-interface Inputs {
+type Inputs = {
   name?: string;
   description?: string;
   price?: number;
-}
+};
 
 export default function useForm(initial = {}): UseFormReturn {
   const [inputs, setInputs] = useState(initial);

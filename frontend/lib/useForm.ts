@@ -11,6 +11,8 @@ type Inputs = {
   name?: string;
   description?: string;
   price?: number;
+  email?: string;
+  password?: string;
 };
 
 export default function useForm(initial = {}): UseFormReturn {

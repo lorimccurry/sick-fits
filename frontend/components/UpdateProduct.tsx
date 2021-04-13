@@ -50,7 +50,6 @@ export default function UpdateProduct({ id }): ReactElement {
   const { inputs, handleChange, resetForm, clearForm } = useForm(data?.Product);
 
   if (loading) return <p>Loading...</p>;
-  console.log(data);
   return (
     <Form
       onSubmit={async (e) => {
@@ -63,7 +62,6 @@ export default function UpdateProduct({ id }): ReactElement {
             price: inputs.price,
           },
         }).catch(console.error);
-        console.log(res);
       }}
     >
       <DisplayError error={error || updateError} />

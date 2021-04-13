@@ -1,23 +1,27 @@
-import { AppProps } from 'next/app';
+import { AppContext, AppProps } from 'next/app';
 import React, { ReactElement } from 'react';
 import Page from '../components/Page';
 import NProgress from 'nprogress';
 import '../components/styles/nprogress.css';
 import Router from 'next/router';
-import { ApolloProvider } from '@apollo/client';
+import { ApolloClient, ApolloProvider } from '@apollo/client';
 import withData from '../lib/withData';
 import {} from '@apollo/client';
+import { NextPageContext } from 'next';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-type PageProps = {
-  query?: string;
+type ApolloProps = {
+  apollo: ApolloClient<any>;
 };
+type ApolloAppProps = ApolloProps & AppProps;
+
+type MyAppProps = AppContext & NextPageContext;
 
 // TODO: fix type for props. AppProps & figure out typing for ApolloProvider client
-function MyApp({ Component, pageProps, apollo }: AppProps): ReactElement {
+function MyApp({ Component, pageProps, apollo }: ApolloAppProps): ReactElement {
   return (
     <ApolloProvider client={apollo}>
       <Page>
@@ -27,8 +31,8 @@ function MyApp({ Component, pageProps, apollo }: AppProps): ReactElement {
   );
 }
 
-MyApp.getInitialProps = async function ({ Component, ctx }) {
-  let pageProps: PageProps = {};
+MyApp.getInitialProps = async function ({ Component, ctx }: MyAppProps) {
+  let pageProps: { query?: NextPageContext['query'] } = {};
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
   }

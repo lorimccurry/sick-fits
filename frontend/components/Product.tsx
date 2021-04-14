@@ -8,10 +8,10 @@ import DeleteProduct from './DeleteProduct';
 
 type ProductProps = {
   key: string;
-  product: Product;
+  product: ProductType;
 };
 
-type Product = {
+export type ProductType = {
   id: string;
   name: string;
   price: number;
@@ -43,7 +43,7 @@ export default function Product({ product }: ProductProps): ReactElement {
       <div className="buttonList">
         <Link
           href={{
-            pathname: 'update',
+            pathname: '/update',
             query: {
               id: product.id,
             },

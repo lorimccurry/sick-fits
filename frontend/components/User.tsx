@@ -1,9 +1,17 @@
 import { gql, useQuery } from '@apollo/client';
+import { ProductType } from './Product';
 
-type UseUser = {
+export type UseUserType = {
   id: number;
   email: string;
   name: string;
+  cart: [CartItemType];
+};
+
+export type CartItemType = {
+  id: number;
+  quantity: number;
+  product: ProductType;
 };
 
 export const CURRENT_USER_QUERY = gql`
@@ -13,13 +21,27 @@ export const CURRENT_USER_QUERY = gql`
         id
         email
         name
-        # todo: query cart once we have it
+        cart {
+          id
+          quantity
+          product {
+            id
+            price
+            name
+            description
+            photo {
+              image {
+                publicUrlTransformed
+              }
+            }
+          }
+        }
       }
     }
   }
 `;
 
-export function useUser(): UseUser | undefined {
+export function useUser(): UseUserType | undefined {
   const { data } = useQuery(CURRENT_USER_QUERY);
 
   return data?.authenticatedItem;

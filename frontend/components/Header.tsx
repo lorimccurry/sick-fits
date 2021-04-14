@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ReactElement } from 'react';
 import Nav from './Nav';
+import Cart from './Cart';
 import styled from 'styled-components';
 
 const LogoStyles = styled.h1`
@@ -46,6 +47,7 @@ export default function Header(): ReactElement {
       <div className="sub-bar">
         <p>Search</p>
       </div>
+      <Cart />
     </HeaderStyles>
   );
 }

@@ -8,6 +8,7 @@ import { ApolloClient, ApolloProvider } from '@apollo/client';
 import withData from '../lib/withData';
 import {} from '@apollo/client';
 import { NextPageContext } from 'next';
+import { CartStateProvider } from '../lib/CartState';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -24,9 +25,11 @@ type MyAppProps = AppContext & NextPageContext;
 function MyApp({ Component, pageProps, apollo }: ApolloAppProps): ReactElement {
   return (
     <ApolloProvider client={apollo}>
-      <Page>
-        <Component {...pageProps} />
-      </Page>
+      <CartStateProvider>
+        <Page>
+          <Component {...pageProps} />
+        </Page>
+      </CartStateProvider>
     </ApolloProvider>
   );
 }

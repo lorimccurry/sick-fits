@@ -49,7 +49,6 @@ export default function paginationField() {
         merged[i] = incoming[i - skip];
       }
 
-      console.log({ merged });
       // return items from the merged cache, which will trigger the read fn again
       return merged;
     },

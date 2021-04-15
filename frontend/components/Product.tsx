@@ -17,11 +17,12 @@ export type ProductType = {
   name: string;
   price: number;
   description: string;
-  photo?: Photo;
+  photo?: PhotoType;
 };
 
-type Photo = {
+export type PhotoType = {
   id: string;
+  altText?: string;
   image?: Image;
 };
 

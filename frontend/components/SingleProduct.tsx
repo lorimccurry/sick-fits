@@ -3,6 +3,7 @@ import { ReactElement } from 'react';
 import DisplayError from './DisplayError';
 import Head from 'next/head';
 import styled from 'styled-components';
+import { ProductType } from './Product';
 
 type SingleProductProps = {
   id: string;
@@ -51,7 +52,7 @@ export default function SingleProduct({
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
 
-  const { Product } = data;
+  const Product: ProductType = data?.Product;
 
   return (
     <ProductStyles>

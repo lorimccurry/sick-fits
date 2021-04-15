@@ -3,6 +3,7 @@ import { ReactElement } from 'react';
 import Nav from './Nav';
 import Cart from './Cart';
 import styled from 'styled-components';
+import Search from './Search';
 
 const LogoStyles = styled.h1`
   background: red;
@@ -45,7 +46,7 @@ export default function Header(): ReactElement {
         <Nav />
       </div>
       <div className="sub-bar">
-        <p>Search</p>
+        <Search />
       </div>
       <Cart />
     </HeaderStyles>

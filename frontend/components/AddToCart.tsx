@@ -1,6 +1,7 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import { ReactElement } from 'react';
+import { useCart } from '../lib/CartState';
 import { CURRENT_USER_QUERY } from './User';
 
 type AddToCartProps = {
@@ -22,14 +23,16 @@ export default function AddToCart({ id }: AddToCartProps): ReactElement {
     },
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
+  const { openCart } = useCart();
 
   return (
     <button
       disabled={loading}
       type="button"
-      onClick={() =>
-        addToCart().catch((err) => console.log(`Boo you got an error: ${err}`))
-      }
+      onClick={() => {
+        addToCart().catch((err) => console.log(`Boo you got an error: ${err}`));
+        openCart();
+      }}
     >
       Add{loading && 'ing'} To Cart 🛒
     </button>

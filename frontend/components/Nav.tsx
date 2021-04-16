@@ -22,7 +22,7 @@ export default function Nav(): ReactElement {
             My Cart
             <CartCount
               count={user.cart.reduce((tally, cartItem) => {
-                return tally + cartItem.quantity;
+                return tally + (cartItem.product ? cartItem.quantity : 0);
               }, 0)}
             />
           </button>

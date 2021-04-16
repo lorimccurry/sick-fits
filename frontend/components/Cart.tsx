@@ -7,6 +7,7 @@ import Supreme from './styles/Supreme';
 import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/CartState';
+import { Checkout } from './Checkout';
 
 export default function Cart(): ReactElement {
   const me = useUser();
@@ -30,6 +31,7 @@ export default function Cart(): ReactElement {
       </ul>
       <footer>
         <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+        <Checkout />
       </footer>
     </CartStyles>
   );

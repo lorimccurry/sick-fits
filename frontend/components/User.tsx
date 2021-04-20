@@ -5,7 +5,7 @@ export type UseUserType = {
   id: number;
   email: string;
   name: string;
-  cart: [CartItemType];
+  cart?: [CartItemType];
 };
 
 export type CartItemType = {

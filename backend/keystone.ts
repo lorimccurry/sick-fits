@@ -67,10 +67,8 @@ export default withAuth(
     }),
     extendGraphqlSchema,
     ui: {
-      // TODO: Show the UI only for people that pass this test
       isAccessAllowed: ({ session }) => !!session?.data,
     },
-    // TODO: add session values here
     session: withItemData(statelessSessions(sessionConfig), {
       // graphql query
       User: `id name email role { ${permissionsList.join(' ')}} `,

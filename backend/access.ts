@@ -69,4 +69,16 @@ export const rules = {
     // if not, do they own this item (return a where filter)
     return { order: { user: { id: session.itemId } } };
   },
+  canManageUsers({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+
+    // do they have the permission of canManageCart
+    if (permissions.canManageUsers({ session })) {
+      return true;
+    }
+    // if not, do they own this item (return a where filter)
+    return { id: session.itemId };
+  },
 };

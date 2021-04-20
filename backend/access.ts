@@ -34,11 +34,39 @@ export const rules = {
     return { user: { id: session.itemId } };
   },
   canReadProducts({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false; // gives proper access is not defined error message
+    }
+
     if (permissions.canManageProducts({ session })) {
       return true; // they can read everything
     }
 
     // they should only see available products based on the status field
     return { status: 'AVAILABLE' };
+  },
+  canOrder({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+
+    // do they have the permission of canManageCart
+    if (permissions.canManageCart({ session })) {
+      return true;
+    }
+    // if not, do they own this item (return a where filter)
+    return { user: { id: session.itemId } };
+  },
+  canManageOrderItems({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+
+    // do they have the permission of canManageCart
+    if (permissions.canManageCart({ session })) {
+      return true;
+    }
+    // if not, do they own this item (return a where filter)
+    return { order: { user: { id: session.itemId } } };
   },
 };

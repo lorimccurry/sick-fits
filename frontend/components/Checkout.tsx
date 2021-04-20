@@ -87,8 +87,7 @@ export function CheckoutForm(): ReactElement {
 
     // change page to view the order
     router.push({
-      pathname: '/order',
-      query: { id: order.data.checkout.id },
+      pathname: `/order/${order.data.checkout.id}`,
     });
 
     // close the cart
